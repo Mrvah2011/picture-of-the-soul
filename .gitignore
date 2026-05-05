@@ -1,0 +1,14 @@
+# Dependencies
+.env
+.env.local
+.vercel
+node_modules/
+
+# Original source files (copied to assets/ with clean names)
+Видео для скролла на сайт.mp4
+Пример видео.mp4
+Описание и информация.txt
+Отзывы/
+Фото для анимации/
+Фото с мероприятия как проходят/
+Фото Светланы.jpg
