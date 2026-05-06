@@ -597,15 +597,15 @@ ul { list-style: none; }
   /* Nav mobile */
   .nav__links {
     display: none; position: fixed; inset: 0;
-    background: rgba(10,10,11,.97);
+    background: rgba(10,10,11,.98);
     backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
     flex-direction: column; align-items: center; justify-content: center;
-    gap: 36px; z-index: 205;
+    gap: 40px; z-index: 9000;
   }
   .nav__links.open { display: flex; }
-  .nav__links a { font-size: 20px; color: var(--champagne) !important; }
-  .nav__cta { padding: 12px 32px !important; font-size: 18px !important; }
-  .nav__burger { display: flex; }
+  .nav__links a { font-size: 22px; color: var(--champagne) !important; font-weight: 500; }
+  .nav__cta { padding: 14px 36px !important; font-size: 18px !important; }
+  .nav__burger { display: flex; z-index: 9001; }
 
   /* Story — on mobile show only hero (phase 0), no scrubbing */
   .story { height: 100vh; }

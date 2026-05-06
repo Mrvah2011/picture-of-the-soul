@@ -5,8 +5,5 @@
   "description": "Kartina Dushi — landing page for Svetlana Yuzmiyeva",
   "engines": {
     "node": ">=18"
-  },
-  "dependencies": {
-    "nodemailer": "^6.9.13"
   }
 }
