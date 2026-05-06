@@ -49,9 +49,8 @@
   <section class="story" id="story">
     <div class="story__sticky">
 
-      <!-- Video background -->
-      <video class="story__video" id="story-video" muted playsinline preload="auto"
-             poster="assets/images/svetlana.jpg">
+      <!-- Video background: no poster — autoplay shows first frame immediately -->
+      <video class="story__video" id="story-video" autoplay muted playsinline preload="auto">
         <source src="assets/video/scroll.mp4" type="video/mp4">
       </video>
       <div class="story__overlay"></div>
@@ -152,13 +151,13 @@
           <div class="metrics__number">3</div>
           <div class="metrics__label">инструмента<br>в&nbsp;1&nbsp;сессии</div>
         </div>
-        <div class="metrics__item reveal reveal-delay-1">
-          <div class="metrics__number">0</div>
-          <div class="metrics__label">навыков рисования<br>нужно</div>
+        <div class="metrics__item metrics__item--accent reveal reveal-delay-1">
+          <div class="metrics__number">20&thinsp;400&nbsp;₽</div>
+          <div class="metrics__label">цена индивидуальной<br>трансформации</div>
         </div>
         <div class="metrics__item reveal reveal-delay-2">
-          <div class="metrics__number">Онлайн</div>
-          <div class="metrics__label">и офлайн<br>по всему миру</div>
+          <div class="metrics__number">0</div>
+          <div class="metrics__label">навыков рисования<br>нужно</div>
         </div>
       </div>
     </div>
@@ -305,36 +304,36 @@
             <img src="assets/images/events/event4.jpg" alt="Мастер-класс Картина Души" loading="lazy">
           </div>
 
-          <!-- Session videos -->
+          <!-- Session videos: preload metadata so first frame is visible -->
           <div class="gallery__slide gallery__slide--video">
-            <video controls preload="none" playsinline>
+            <video preload="metadata" playsinline>
               <source src="assets/video/session1.mp4" type="video/mp4">
             </video>
-            <div class="gallery__play" aria-hidden="true">&#9654;</div>
+            <button class="gallery__play-btn" aria-label="Воспроизвести видео">&#9654;</button>
           </div>
           <div class="gallery__slide gallery__slide--video">
-            <video controls preload="none" playsinline>
+            <video preload="metadata" playsinline>
               <source src="assets/video/session2.mp4" type="video/mp4">
             </video>
-            <div class="gallery__play" aria-hidden="true">&#9654;</div>
+            <button class="gallery__play-btn" aria-label="Воспроизвести видео">&#9654;</button>
           </div>
           <div class="gallery__slide gallery__slide--video">
-            <video controls preload="none" playsinline>
+            <video preload="metadata" playsinline>
               <source src="assets/video/session3.mp4" type="video/mp4">
             </video>
-            <div class="gallery__play" aria-hidden="true">&#9654;</div>
+            <button class="gallery__play-btn" aria-label="Воспроизвести видео">&#9654;</button>
           </div>
           <div class="gallery__slide gallery__slide--video">
-            <video controls preload="none" playsinline>
+            <video preload="metadata" playsinline>
               <source src="assets/video/session4.mp4" type="video/mp4">
             </video>
-            <div class="gallery__play" aria-hidden="true">&#9654;</div>
+            <button class="gallery__play-btn" aria-label="Воспроизвести видео">&#9654;</button>
           </div>
           <div class="gallery__slide gallery__slide--video">
-            <video controls preload="none" playsinline>
+            <video preload="metadata" playsinline>
               <source src="assets/video/session5.mp4" type="video/mp4">
             </video>
-            <div class="gallery__play" aria-hidden="true">&#9654;</div>
+            <button class="gallery__play-btn" aria-label="Воспроизвести видео">&#9654;</button>
           </div>
 
         </div>
@@ -361,11 +360,14 @@
           <div class="review-card"><img src="assets/images/reviews/review5.jpg" alt="Отзыв клиента" loading="lazy"></div>
           <div class="review-card"><img src="assets/images/reviews/review6.jpg" alt="Отзыв клиента" loading="lazy"></div>
           <div class="review-card"><img src="assets/images/reviews/review7.jpg" alt="Отзыв клиента" loading="lazy"></div>
-          <div class="review-card review-card--video">
-            <!-- No poster: browser uses native first frame -->
-            <video controls preload="none" playsinline aria-label="Видео-отзыв">
+          <div class="review-card review-card--video" id="review-video-card">
+            <video id="review-video" preload="metadata" playsinline aria-label="Видео-отзыв">
               <source src="assets/video/review.mp4" type="video/mp4">
             </video>
+            <!-- Big centered play button, hides on play -->
+            <button class="review-play-btn" id="review-play-btn" aria-label="Воспроизвести отзыв">
+              <span class="review-play-btn__icon">&#9654;</span>
+            </button>
           </div>
         </div>
       </div>

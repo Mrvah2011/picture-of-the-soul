@@ -79,9 +79,9 @@ gsap.set('.story__phase[data-phase="0"] .btn', { opacity: 0, y: 16 });
 
 /* ===== Story Video Scrubbing (desktop only) ===== */
 if (!isMobile) {
-  const video     = document.getElementById('story-video');
-  const phases    = document.querySelectorAll('.story__phase');
-  const dots      = document.querySelectorAll('.story__dot');
+  const video      = document.getElementById('story-video');
+  const phases     = document.querySelectorAll('.story__phase');
+  const dots       = document.querySelectorAll('.story__dot');
   const scrollHint = document.getElementById('story-hint');
 
   // Phase breakpoints: 0–20% hero, 20–47% finance, 47–73% relations, 73–100% codes
@@ -89,14 +89,19 @@ if (!isMobile) {
   let currentPhase = 0;
   let targetTime   = 0;
   let rafPending   = false;
+  let videoReady   = false;
 
-  // Pause video — scroll controls it
-  video.addEventListener('loadedmetadata', () => {
+  // Autoplay → show first frame → immediately pause, then scroll controls
+  function pauseAtStart() {
     video.pause();
     video.currentTime = 0;
+    videoReady = true;
+  }
+  video.addEventListener('canplay',        pauseAtStart, { once: true });
+  video.addEventListener('loadedmetadata', () => {
+    // Ensure we can seek from the beginning
+    if (video.currentTime !== 0) video.currentTime = 0;
   });
-  // Autoplay starts, immediately pause after first frame loads
-  video.addEventListener('canplay', () => { video.pause(); }, { once: true });
 
   function setPhase(idx) {
     if (idx === currentPhase) return;
@@ -212,14 +217,39 @@ function createCarousel({ track, prevBtn, nextBtn, dotsContainer, visibleCount, 
 /* Gallery */
 const gt = document.getElementById('gallery-track');
 if (gt) {
-  /* Clicking a video slide — play/pause */
+  /* Gallery video slides — first frame + play button */
   gt.querySelectorAll('.gallery__slide--video').forEach(slide => {
-    const video = slide.querySelector('video');
+    const video  = slide.querySelector('video');
+    const playBtn = slide.querySelector('.gallery__play-btn');
+
+    // Seek to first frame as soon as metadata is ready
+    video.addEventListener('loadedmetadata', () => { video.currentTime = 0.01; }, { once: true });
+
+    // Play button click
+    if (playBtn) {
+      playBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        video.play();
+        playBtn.classList.add('hidden');
+        slide.classList.add('playing');
+      });
+    }
+
+    // Pause on slide click when playing
     slide.addEventListener('click', () => {
-      if (video.paused) { video.play(); slide.classList.add('playing'); }
-      else              { video.pause(); slide.classList.remove('playing'); }
+      if (!video.paused) {
+        video.pause();
+        if (playBtn) playBtn.classList.remove('hidden');
+        slide.classList.remove('playing');
+      }
     });
-    video.addEventListener('ended', () => slide.classList.remove('playing'));
+
+    // Restore play button when video ends
+    video.addEventListener('ended', () => {
+      slide.classList.remove('playing');
+      if (playBtn) playBtn.classList.remove('hidden');
+      video.currentTime = 0.01;
+    });
   });
 
   createCarousel({
@@ -229,6 +259,32 @@ if (gt) {
     dotsContainer: document.getElementById('gallery-dots'),
     dotClass: 'gallery__dot',
     visibleCount: () => window.innerWidth < 600 ? 1 : window.innerWidth < 1024 ? 2 : 3
+  });
+}
+
+/* ===== Review Video ===== */
+const reviewVideo   = document.getElementById('review-video');
+const reviewPlayBtn = document.getElementById('review-play-btn');
+if (reviewVideo && reviewPlayBtn) {
+  // Show first frame as poster
+  reviewVideo.addEventListener('loadedmetadata', () => { reviewVideo.currentTime = 0.01; }, { once: true });
+
+  reviewPlayBtn.addEventListener('click', () => {
+    reviewVideo.play();
+    reviewPlayBtn.classList.add('hidden');
+  });
+
+  reviewVideo.addEventListener('ended', () => {
+    reviewPlayBtn.classList.remove('hidden');
+    reviewVideo.currentTime = 0.01;
+  });
+
+  // Clicking video while playing → pause and show button
+  reviewVideo.addEventListener('click', () => {
+    if (!reviewVideo.paused) {
+      reviewVideo.pause();
+      reviewPlayBtn.classList.remove('hidden');
+    }
   });
 }
 
