@@ -416,12 +416,8 @@
             <label for="f-name">Ваше имя</label>
           </div>
           <div class="form-field">
-            <input type="text" name="telegram" id="f-tg" placeholder=" " required autocomplete="off" maxlength="100">
-            <label for="f-tg">Telegram (@username)</label>
-          </div>
-          <div class="form-field">
-            <input type="tel" name="phone" id="f-phone" placeholder=" " autocomplete="tel" maxlength="20">
-            <label for="f-phone">Телефон (необязательно)</label>
+            <input type="tel" name="phone" id="f-phone" placeholder=" " required autocomplete="tel" maxlength="20">
+            <label for="f-phone">Ваш телефон</label>
           </div>
 
           <div class="form-checks">
@@ -438,7 +434,7 @@
             <label class="form-check">
               <input type="checkbox" name="newsletter">
               <span class="form-check__box" aria-hidden="true"></span>
-              <span>Даю согласие на получение рассылки</span>
+              <span>Даю согласие на получение <a href="#newsletter-consent" class="form-link">рассылки</a></span>
             </label>
           </div>
 

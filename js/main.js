@@ -309,10 +309,10 @@ if (form) {
     clearErrors();
 
     let valid = true;
-    const nameEl = form.querySelector('[name="name"]');
-    const tgEl   = form.querySelector('[name="telegram"]');
-    if (!nameEl.value.trim()) { nameEl.closest('.form-field').classList.add('error'); valid = false; }
-    if (!tgEl.value.trim())   { tgEl.closest('.form-field').classList.add('error');   valid = false; }
+    const nameEl  = form.querySelector('[name="name"]');
+    const phoneEl = form.querySelector('[name="phone"]');
+    if (!nameEl.value.trim())  { nameEl.closest('.form-field').classList.add('error');  valid = false; }
+    if (!phoneEl.value.trim()) { phoneEl.closest('.form-field').classList.add('error'); valid = false; }
     form.querySelectorAll('[name="privacy"],[name="personal_data"]').forEach(cb => {
       if (!cb.checked) { cb.closest('.form-check').classList.add('error'); valid = false; }
     });
@@ -329,8 +329,7 @@ if (form) {
     try {
       const payload = {
         name:         nameEl.value.trim(),
-        telegram:     tgEl.value.trim(),
-        phone:        (form.querySelector('[name="phone"]')?.value || '').trim(),
+        phone:        phoneEl.value.trim(),
         session_type: sessionRadio?.value || 'Не указан'
       };
 

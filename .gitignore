@@ -4,6 +4,9 @@
 .vercel
 node_modules/
 
+# Credentials / private info
+для уведомления/
+
 # Original source files (copied to assets/ with clean names)
 Видео для скролла на сайт.mp4
 Пример видео.mp4
