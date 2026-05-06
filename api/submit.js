@@ -13,7 +13,7 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, telegram, phone } = req.body || {};
+  const { name, telegram, phone, session_type } = req.body || {};
 
   if (!name || !telegram) {
     return res.status(400).json({ error: 'Missing required fields' });
@@ -26,6 +26,7 @@ module.exports = async function handler(req, res) {
   const safeName     = clean(name);
   const safeTelegram = clean(telegram);
   const safePhone    = clean(phone);
+  const safeSession  = clean(session_type);
 
   const now = new Date().toLocaleString('ru-RU', {
     timeZone: 'Europe/Moscow',
@@ -34,8 +35,8 @@ module.exports = async function handler(req, res) {
   });
 
   const results = await Promise.allSettled([
-    sendTelegram(safeName, safeTelegram, safePhone, now),
-    sendEmail(safeName, safeTelegram, safePhone, now)
+    sendTelegram(safeName, safeTelegram, safePhone, safeSession, now),
+    sendEmail(safeName, safeTelegram, safePhone, safeSession, now)
   ]);
 
   const anyOk = results.some(r => r.status === 'fulfilled');
@@ -49,17 +50,18 @@ module.exports = async function handler(req, res) {
 };
 
 // ===== Telegram =====
-async function sendTelegram(name, telegram, phone, time) {
+async function sendTelegram(name, telegram, phone, session, time) {
   const token  = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
   if (!token || !chatId) throw new Error('Telegram not configured');
 
-  const phoneRow = phone ? `\n📞 <b>Телефон:</b> ${phone}` : '';
+  const phoneRow   = phone   ? `\n📞 <b>Телефон:</b> ${phone}`   : '';
+  const sessionRow = session ? `\n🎯 <b>Формат:</b> ${session}`   : '';
   const text = [
     '🌸 <b>Новая заявка — Картина Души</b>',
     '',
     `👤 <b>Имя:</b> ${name}`,
-    `✈️ <b>Telegram:</b> ${telegram}${phoneRow}`,
+    `✈️ <b>Telegram:</b> ${telegram}${phoneRow}${sessionRow}`,
     '',
     `🕐 ${time}`
   ].join('\n');
@@ -73,7 +75,7 @@ async function sendTelegram(name, telegram, phone, time) {
 }
 
 // ===== Email =====
-async function sendEmail(name, telegram, phone, time) {
+async function sendEmail(name, telegram, phone, session, time) {
   const { EMAIL_HOST, EMAIL_PORT, EMAIL_USER, EMAIL_PASS, EMAIL_TO } = process.env;
   if (!EMAIL_HOST || !EMAIL_USER || !EMAIL_PASS || !EMAIL_TO) {
     throw new Error('Email not configured');
@@ -89,9 +91,8 @@ async function sendEmail(name, telegram, phone, time) {
     auth: { user: EMAIL_USER, pass: EMAIL_PASS }
   });
 
-  const phoneRow = phone
-    ? `<tr><td style="padding:6px 0;color:#888;white-space:nowrap">Телефон:</td><td style="padding:6px 0;padding-left:16px;font-weight:600">${phone}</td></tr>`
-    : '';
+  const phoneRow   = phone   ? `<tr><td style="padding:6px 0;color:#888;white-space:nowrap">Телефон:</td><td style="padding:6px 0;padding-left:16px;font-weight:600">${phone}</td></tr>` : '';
+  const sessionRow = session ? `<tr><td style="padding:6px 0;color:#888;white-space:nowrap">Формат:</td><td style="padding:6px 0;padding-left:16px;font-weight:600;color:#FFB800">${session}</td></tr>` : '';
 
   await transporter.sendMail({
     from:    `"Картина Души" <${EMAIL_USER}>`,
@@ -119,7 +120,7 @@ async function sendEmail(name, telegram, phone, time) {
                     <td style="padding:6px 0;padding-left:16px;font-weight:600;color:#111">${name}</td></tr>
                 <tr><td style="padding:6px 0;color:#888;white-space:nowrap">Telegram:</td>
                     <td style="padding:6px 0;padding-left:16px;font-weight:600;color:#111">${telegram}</td></tr>
-                ${phoneRow}
+                ${phoneRow}${sessionRow}
               </table>
             </td>
           </tr>

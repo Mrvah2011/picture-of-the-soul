@@ -5,29 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Картина Души — Светлана Юзмиева | Психолог Сочи</title>
   <meta name="description" content="Картинка души Сочи — авторский метод работы с подсознанием: арт-терапия, нейропрограммирование и ведическая нумерология. Трансформация финансов, отношений и энергии за 1 сессию. Онлайн и офлайн.">
-  <meta name="keywords" content="картинка души сочи, картина души, светлана юзмиева, психолог сочи, арт-терапия сочи, нейропрограммирование, нумерология по дате рождения">
+  <meta name="keywords" content="картинка души сочи, картина души, рисование картины души, светлана юзмиева, психолог сочи, арт-терапия сочи, нейропрограммирование, нумерология по дате рождения">
   <meta name="author" content="Светлана Юзмиева">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://kartina-dushi.vercel.app">
 
   <meta property="og:title" content="Картина Души — Трансформация за 1 сессию | Светлана Юзмиева">
-  <meta property="og:description" content="Выход из ступора через новые нейронные связи. Арт-терапия, нейропрограммирование, ведическая нумерология — 3 метода в 1 сессии. Запишитесь онлайн.">
+  <meta property="og:description" content="Рисование картины души — выход из ступора через новые нейронные связи. Арт-терапия, нейропрограммирование, ведическая нумерология — 3 метода в 1 сессии.">
   <meta property="og:image" content="/assets/images/og.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:url" content="https://kartina-dushi.vercel.app">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Картина Души — Светлана Юзмиева">
-  <meta name="twitter:description" content="Трансформация через арт-терапию, нейропрограммирование и нумерологию за 1 сессию.">
-  <meta name="twitter:image" content="/assets/images/og.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/style.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -36,12 +27,12 @@
 <body>
 
   <div class="cursor-ring" id="cursor-ring"></div>
-  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-dot"  id="cursor-dot"></div>
 
   <!-- ===== NAVIGATION ===== -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="#hero" class="nav__logo">Картина&nbsp;Души</a>
+      <a href="#story" class="nav__logo">Картина&nbsp;Души</a>
       <button class="nav__burger" id="nav-burger" aria-label="Открыть меню" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -54,60 +45,82 @@
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="hero">
-    <div class="hero__video-wrap">
-      <video class="hero__video" autoplay muted loop playsinline preload="auto"
+  <!-- ===== STORY (HERO + SCROLLYTELLING merged) ===== -->
+  <section class="story" id="story">
+    <div class="story__sticky">
+
+      <!-- Video background -->
+      <video class="story__video" id="story-video" muted playsinline preload="auto"
              poster="assets/images/svetlana.jpg">
         <source src="assets/video/scroll.mp4" type="video/mp4">
       </video>
-      <div class="hero__overlay"></div>
-    </div>
-    <div class="hero__content">
-      <p class="hero__eyebrow">Светлана Юзмиева&nbsp;&bull;&nbsp;Психолог-практик&nbsp;&bull;&nbsp;Сочи</p>
-      <h1 class="hero__title">Выход из финансового ступора через новые нейронные связи <em>за&nbsp;1&nbsp;сессию</em></h1>
-      <p class="hero__sub">Метод «Картина Души» — арт-терапия, нейропрограммирование и ведическая нумерология в одной встрече</p>
-      <a href="#form" class="btn btn--gold">Записаться на сессию</a>
-    </div>
-    <div class="hero__scroll-hint" aria-hidden="true">
-      <span>Листайте</span>
-      <div class="hero__scroll-arrow"></div>
-    </div>
-  </section>
+      <div class="story__overlay"></div>
 
-  <!-- ===== SCROLLYTELLING (desktop) ===== -->
-  <section class="scrollytelling" id="method" aria-label="О методе">
-    <div class="scrollytelling__sticky">
-      <video class="scrollytelling__video" id="scroll-video" muted playsinline preload="auto">
-        <source src="assets/video/scroll.mp4" type="video/mp4">
-      </video>
-      <div class="scrollytelling__overlay"></div>
-      <div class="scrollytelling__phases">
-        <div class="scroll-phase active" data-phase="0">
-          <span class="scroll-phase__tag">Финансы &amp; Карьера</span>
-          <h2 class="scroll-phase__title">Программирование финансового роста и проявленности</h2>
-          <p class="scroll-phase__sub">Арт-терапия выводит на поверхность скрытые блоки. Мы перепишем сценарии денег и успеха прямо в подсознании.</p>
-        </div>
-        <div class="scroll-phase" data-phase="1">
-          <span class="scroll-phase__tag">Отношения &amp; Энергия</span>
-          <h2 class="scroll-phase__title">Трансформация сценариев отношений и внутренней опоры</h2>
-          <p class="scroll-phase__sub">Нейропрограммирование перезаписывает устаревшие паттерны. Вы перестаёте повторять одни и те же истории.</p>
-        </div>
-        <div class="scroll-phase" data-phase="2">
-          <span class="scroll-phase__tag">Предназначение &amp; Коды</span>
-          <h2 class="scroll-phase__title">Раскрытие природного кода через ведическую нумерологию</h2>
-          <p class="scroll-phase__sub">Дата рождения содержит ваш уникальный код талантов. Мы расшифруем его и направим вашу энергию туда, где она работает.</p>
+      <!-- Phase 0 — Hero -->
+      <div class="story__phase active" data-phase="0">
+        <div class="story__content">
+          <p class="story__eyebrow">Светлана Юзмиева&nbsp;&bull;&nbsp;Психолог-практик&nbsp;&bull;&nbsp;Сочи</p>
+          <h1 class="story__hero-title">
+            Выход из финансового ступора через новые нейронные связи
+            <em>за&nbsp;1&nbsp;сессию</em>
+          </h1>
+          <p class="story__hero-sub">Рисование картины души — арт-терапия, нейропрограммирование<br>и ведическая нумерология в одной встрече</p>
+          <a href="#form" class="btn btn--gold">Записаться на сессию</a>
         </div>
       </div>
-    </div>
-    <div class="scrollytelling__spacer"></div>
+
+      <!-- Phase 1 — Finance -->
+      <div class="story__phase" data-phase="1">
+        <div class="story__content">
+          <span class="story__tag">Финансы &amp; Карьера</span>
+          <h2 class="story__method-title">Программирование финансового роста и проявленности</h2>
+          <p class="story__method-sub">Арт-терапия выводит на поверхность скрытые блоки. Мы перепишем сценарии денег и успеха прямо в подсознании.</p>
+        </div>
+      </div>
+
+      <!-- Phase 2 — Relations -->
+      <div class="story__phase" data-phase="2">
+        <div class="story__content">
+          <span class="story__tag">Отношения &amp; Энергия</span>
+          <h2 class="story__method-title">Трансформация сценариев отношений и внутренней опоры</h2>
+          <p class="story__method-sub">Нейропрограммирование перезаписывает устаревшие паттерны. Вы перестаёте повторять одни и те же истории.</p>
+        </div>
+      </div>
+
+      <!-- Phase 3 — Codes -->
+      <div class="story__phase" data-phase="3">
+        <div class="story__content">
+          <span class="story__tag">Предназначение &amp; Коды</span>
+          <h2 class="story__method-title">Раскрытие природного кода через ведическую нумерологию</h2>
+          <p class="story__method-sub">Дата рождения содержит ваш уникальный код талантов. Мы расшифруем его и направим вашу энергию туда, где она работает.</p>
+        </div>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="story__scroll-hint" id="story-hint" aria-hidden="true">
+        <span>Листайте</span>
+        <div class="story__scroll-arrow"></div>
+      </div>
+
+      <!-- Phase dots -->
+      <div class="story__dots" aria-hidden="true">
+        <div class="story__dot active" data-dot="0"></div>
+        <div class="story__dot" data-dot="1"></div>
+        <div class="story__dot" data-dot="2"></div>
+        <div class="story__dot" data-dot="3"></div>
+      </div>
+
+    </div><!-- /sticky -->
+
+    <!-- Spacer gives scroll distance (4 × 100vh) -->
+    <div class="story__spacer"></div>
   </section>
 
-  <!-- ===== MOBILE METHOD FALLBACK ===== -->
-  <section class="method-mobile" aria-label="О методе">
+  <!-- ===== MOBILE METHOD CARDS ===== -->
+  <section class="method-mobile" id="method" aria-label="О методе">
     <div class="container">
-      <h2 class="section-title reveal">Метод «Картина Души»</h2>
-      <p class="section-sub reveal">Три инструмента трансформации в одной сессии</p>
+      <h2 class="section-title reveal">Рисование картины души</h2>
+      <p class="section-sub reveal">Три инструмента трансформации — в одной сессии</p>
       <div class="method-mobile__grid">
         <div class="method-mobile__card reveal">
           <div class="method-mobile__num">01</div>
@@ -139,13 +152,13 @@
           <div class="metrics__number">3</div>
           <div class="metrics__label">инструмента<br>в&nbsp;1&nbsp;сессии</div>
         </div>
-        <div class="metrics__item metrics__item--accent reveal reveal-delay-1">
-          <div class="metrics__number">20&thinsp;400&nbsp;₽</div>
-          <div class="metrics__label">цена<br>трансформации</div>
-        </div>
-        <div class="metrics__item reveal reveal-delay-2">
+        <div class="metrics__item reveal reveal-delay-1">
           <div class="metrics__number">0</div>
           <div class="metrics__label">навыков рисования<br>нужно</div>
+        </div>
+        <div class="metrics__item reveal reveal-delay-2">
+          <div class="metrics__number">Онлайн</div>
+          <div class="metrics__label">и офлайн<br>по всему миру</div>
         </div>
       </div>
     </div>
@@ -155,12 +168,12 @@
   <section class="services" id="services" aria-label="Направления работы">
     <div class="container">
       <h2 class="section-title reveal">Что меняется после сессии</h2>
-      <p class="section-sub reveal">Выберите свой запрос — каждое направление прорабатываем комплексно</p>
+      <p class="section-sub reveal">Выберите свой запрос — каждое направление прорабатывается комплексно</p>
       <div class="services__grid">
         <div class="service-card reveal">
           <div class="service-card__icon" aria-hidden="true">◈</div>
           <h3 class="service-card__title">Карьера &amp; Финансы</h3>
-          <p class="service-card__text">Убираем прокрастинацию, программируем финансовый рост, раскрываем таланты через коды даты рождения. Вы выходите на новый уровень проявленности.</p>
+          <p class="service-card__text">Убираем прокрастинацию, программируем финансовый рост, раскрываем таланты через коды даты рождения.</p>
           <ul class="service-card__list">
             <li>Финансовый ступор → действие</li>
             <li>Материальный доход</li>
@@ -171,7 +184,7 @@
         <div class="service-card service-card--featured reveal reveal-delay-1">
           <div class="service-card__icon" aria-hidden="true">♡</div>
           <h3 class="service-card__title">Отношения &amp; Опора</h3>
-          <p class="service-card__text">Трансформируем повторяющиеся сценарии. Вы встречаете нужных людей и выстраиваете внутреннюю опору независимо от внешних обстоятельств.</p>
+          <p class="service-card__text">Трансформируем повторяющиеся сценарии. Вы встречаете нужных людей и выстраиваете внутреннюю опору.</p>
           <ul class="service-card__list">
             <li>Встретить партнёра</li>
             <li>Выйти из токсичных паттернов</li>
@@ -182,7 +195,7 @@
         <div class="service-card reveal reveal-delay-2">
           <div class="service-card__icon" aria-hidden="true">⟡</div>
           <h3 class="service-card__title">Энергия &amp; Смысл</h3>
-          <p class="service-card__text">Возбуждаем новые нейронные связи, убираем ступор и хроническую усталость. Вы снова чувствуете вкус жизни и понимаете своё предназначение.</p>
+          <p class="service-card__text">Возбуждаем новые нейронные связи, убираем ступор и усталость. Вы снова чувствуете вкус жизни.</p>
           <ul class="service-card__list">
             <li>Нехватка энергии</li>
             <li>Поиск смысла жизни</li>
@@ -194,12 +207,51 @@
     </div>
   </section>
 
+  <!-- ===== PRICING ===== -->
+  <section class="pricing" id="pricing" aria-label="Тарифы">
+    <div class="container">
+      <h2 class="section-title reveal">Форматы работы</h2>
+      <p class="section-sub reveal">Онлайн и офлайн — результат одинаково глубокий</p>
+      <div class="pricing__grid">
+
+        <div class="pricing__card reveal">
+          <div class="pricing__badge">Групповое</div>
+          <div class="pricing__price">6&thinsp;200 <span>₽</span></div>
+          <p class="pricing__desc">Мастер-класс в мини-группе. Погружение в метод в поддерживающей атмосфере — идеально для первого знакомства.</p>
+          <ul class="pricing__list">
+            <li>Групповая сессия рисования</li>
+            <li>Разбор кодов даты рождения</li>
+            <li>Поддержка участников</li>
+            <li>Онлайн или офлайн</li>
+          </ul>
+          <a href="#form" class="btn btn--outline pricing__btn" data-session="group">Записаться</a>
+        </div>
+
+        <div class="pricing__card pricing__card--featured reveal reveal-delay-1">
+          <div class="pricing__badge">Индивидуальное</div>
+          <div class="pricing__price">20&thinsp;400 <span>₽</span></div>
+          <p class="pricing__desc">Личная сессия один на один. Глубокая работа с вашим конкретным запросом — финансы, отношения или предназначение.</p>
+          <ul class="pricing__list">
+            <li>Персональная программа</li>
+            <li>Арт-терапия + нейропрограммирование</li>
+            <li>Ведическая нумерология по дате</li>
+            <li>Запись сессии</li>
+          </ul>
+          <a href="#form" class="btn btn--gold pricing__btn" data-session="individual">Записаться</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ===== ABOUT ===== -->
   <section class="about" id="about" aria-label="Об авторе">
     <div class="container">
       <div class="about__inner">
         <div class="about__photo-wrap reveal">
-          <img src="assets/images/svetlana.jpg" alt="Светлана Юзмиева — психолог-практик, метод Картина Души" class="about__photo" loading="lazy" width="420" height="560">
+          <img src="assets/images/svetlana.jpg"
+               alt="Светлана Юзмиева — психолог-практик, метод Картина Души"
+               class="about__photo" loading="lazy" width="420" height="560">
           <div class="about__photo-glow" aria-hidden="true"></div>
         </div>
         <div class="about__content">
@@ -238,15 +290,53 @@
       <button class="gallery__arrow gallery__arrow--prev" id="gallery-prev" aria-label="Назад">&#8592;</button>
       <div class="gallery__viewport">
         <div class="gallery__track" id="gallery-track">
-          <div class="gallery__slide"><img src="assets/images/events/event1.jpg" alt="Сессия Картина Души" loading="lazy"></div>
-          <div class="gallery__slide"><img src="assets/images/events/event2.jpg" alt="Сессия Картина Души" loading="lazy"></div>
-          <div class="gallery__slide"><img src="assets/images/events/event3.jpg" alt="Сессия Картина Души" loading="lazy"></div>
-          <div class="gallery__slide"><img src="assets/images/events/event4.jpg" alt="Сессия Картина Души" loading="lazy"></div>
-          <div class="gallery__slide"><img src="assets/images/events/event5.jpg" alt="Сессия Картина Души" loading="lazy"></div>
-          <div class="gallery__slide"><img src="assets/images/events/event6.jpg" alt="Сессия Картина Души" loading="lazy"></div>
-          <div class="gallery__slide"><img src="assets/images/events/event7.jpg" alt="Сессия Картина Души" loading="lazy"></div>
-          <div class="gallery__slide"><img src="assets/images/events/event8.jpg" alt="Мастер-класс Картина Души" loading="lazy"></div>
-          <div class="gallery__slide"><img src="assets/images/events/event9.jpg" alt="Мастер-класс Картина Души" loading="lazy"></div>
+
+          <!-- Photos -->
+          <div class="gallery__slide">
+            <img src="assets/images/events/event1.jpg" alt="Сессия Картина Души" loading="lazy">
+          </div>
+          <div class="gallery__slide">
+            <img src="assets/images/events/event2.jpg" alt="Сессия Картина Души" loading="lazy">
+          </div>
+          <div class="gallery__slide">
+            <img src="assets/images/events/event3.jpg" alt="Мастер-класс Картина Души" loading="lazy">
+          </div>
+          <div class="gallery__slide">
+            <img src="assets/images/events/event4.jpg" alt="Мастер-класс Картина Души" loading="lazy">
+          </div>
+
+          <!-- Session videos -->
+          <div class="gallery__slide gallery__slide--video">
+            <video controls preload="none" playsinline>
+              <source src="assets/video/session1.mp4" type="video/mp4">
+            </video>
+            <div class="gallery__play" aria-hidden="true">&#9654;</div>
+          </div>
+          <div class="gallery__slide gallery__slide--video">
+            <video controls preload="none" playsinline>
+              <source src="assets/video/session2.mp4" type="video/mp4">
+            </video>
+            <div class="gallery__play" aria-hidden="true">&#9654;</div>
+          </div>
+          <div class="gallery__slide gallery__slide--video">
+            <video controls preload="none" playsinline>
+              <source src="assets/video/session3.mp4" type="video/mp4">
+            </video>
+            <div class="gallery__play" aria-hidden="true">&#9654;</div>
+          </div>
+          <div class="gallery__slide gallery__slide--video">
+            <video controls preload="none" playsinline>
+              <source src="assets/video/session4.mp4" type="video/mp4">
+            </video>
+            <div class="gallery__play" aria-hidden="true">&#9654;</div>
+          </div>
+          <div class="gallery__slide gallery__slide--video">
+            <video controls preload="none" playsinline>
+              <source src="assets/video/session5.mp4" type="video/mp4">
+            </video>
+            <div class="gallery__play" aria-hidden="true">&#9654;</div>
+          </div>
+
         </div>
       </div>
       <button class="gallery__arrow gallery__arrow--next" id="gallery-next" aria-label="Вперёд">&#8594;</button>
@@ -261,44 +351,30 @@
       <p class="section-sub reveal">Скриншоты переписок и видео-отзывы — только реальные факты</p>
     </div>
     <div class="reviews__outer">
-      <button class="reviews__arrow reviews__arrow--prev" id="reviews-prev" aria-label="Предыдущий отзыв">&#8592;</button>
+      <button class="reviews__arrow reviews__arrow--prev" id="reviews-prev" aria-label="Предыдущий">&#8592;</button>
       <div class="reviews__viewport">
         <div class="reviews__track" id="reviews-track">
-          <div class="review-card">
-            <img src="assets/images/reviews/review1.jpg" alt="Отзыв клиента" loading="lazy">
-          </div>
-          <div class="review-card">
-            <img src="assets/images/reviews/review2.jpg" alt="Отзыв клиента" loading="lazy">
-          </div>
-          <div class="review-card">
-            <img src="assets/images/reviews/review3.jpg" alt="Отзыв клиента" loading="lazy">
-          </div>
-          <div class="review-card">
-            <img src="assets/images/reviews/review4.jpg" alt="Отзыв клиента" loading="lazy">
-          </div>
-          <div class="review-card">
-            <img src="assets/images/reviews/review5.jpg" alt="Отзыв клиента" loading="lazy">
-          </div>
-          <div class="review-card">
-            <img src="assets/images/reviews/review6.jpg" alt="Отзыв клиента" loading="lazy">
-          </div>
-          <div class="review-card">
-            <img src="assets/images/reviews/review7.jpg" alt="Отзыв клиента" loading="lazy">
-          </div>
+          <div class="review-card"><img src="assets/images/reviews/review1.jpg" alt="Отзыв клиента" loading="lazy"></div>
+          <div class="review-card"><img src="assets/images/reviews/review2.jpg" alt="Отзыв клиента" loading="lazy"></div>
+          <div class="review-card"><img src="assets/images/reviews/review3.jpg" alt="Отзыв клиента" loading="lazy"></div>
+          <div class="review-card"><img src="assets/images/reviews/review4.jpg" alt="Отзыв клиента" loading="lazy"></div>
+          <div class="review-card"><img src="assets/images/reviews/review5.jpg" alt="Отзыв клиента" loading="lazy"></div>
+          <div class="review-card"><img src="assets/images/reviews/review6.jpg" alt="Отзыв клиента" loading="lazy"></div>
+          <div class="review-card"><img src="assets/images/reviews/review7.jpg" alt="Отзыв клиента" loading="lazy"></div>
           <div class="review-card review-card--video">
-            <video controls preload="none" poster="assets/images/svetlana.jpg" aria-label="Видео-отзыв">
+            <!-- No poster: browser uses native first frame -->
+            <video controls preload="none" playsinline aria-label="Видео-отзыв">
               <source src="assets/video/review.mp4" type="video/mp4">
             </video>
           </div>
         </div>
       </div>
-      <button class="reviews__arrow reviews__arrow--next" id="reviews-next" aria-label="Следующий отзыв">&#8594;</button>
+      <button class="reviews__arrow reviews__arrow--next" id="reviews-next" aria-label="Следующий">&#8594;</button>
     </div>
-    <div class="reviews__dots" id="reviews-dots" role="tablist" aria-label="Навигация по отзывам"></div>
+    <div class="reviews__dots" id="reviews-dots" role="tablist"></div>
   </section>
 
   <!-- ===== FORM ===== -->
-  <!-- data-payment-ready: placeholder for future online payment integration -->
   <section class="form-section" id="form" data-payment-ready="true" aria-label="Запись на сессию">
     <div class="container">
       <div class="form-wrap">
@@ -309,19 +385,40 @@
         </div>
 
         <form class="lead-form" id="lead-form" novalidate>
+
+          <!-- Session type selector -->
+          <div class="session-type" id="session-type-group">
+            <p class="session-type__label">Выберите формат:</p>
+            <div class="session-type__options">
+              <label class="session-radio">
+                <input type="radio" name="session_type" value="Групповое — 6 200 ₽">
+                <span class="session-radio__box"></span>
+                <span class="session-radio__text">
+                  <strong>Групповое</strong>
+                  <em>6&thinsp;200 ₽</em>
+                </span>
+              </label>
+              <label class="session-radio">
+                <input type="radio" name="session_type" value="Индивидуальное — 20 400 ₽">
+                <span class="session-radio__box"></span>
+                <span class="session-radio__text">
+                  <strong>Индивидуальное</strong>
+                  <em>20&thinsp;400 ₽</em>
+                </span>
+              </label>
+            </div>
+          </div>
+
           <div class="form-field">
-            <input type="text" name="name" id="f-name" placeholder=" " required
-                   autocomplete="name" maxlength="100">
+            <input type="text" name="name" id="f-name" placeholder=" " required autocomplete="name" maxlength="100">
             <label for="f-name">Ваше имя</label>
           </div>
           <div class="form-field">
-            <input type="text" name="telegram" id="f-tg" placeholder=" " required
-                   autocomplete="off" maxlength="100">
+            <input type="text" name="telegram" id="f-tg" placeholder=" " required autocomplete="off" maxlength="100">
             <label for="f-tg">Telegram (@username)</label>
           </div>
           <div class="form-field">
-            <input type="tel" name="phone" id="f-phone" placeholder=" "
-                   autocomplete="tel" maxlength="20">
+            <input type="tel" name="phone" id="f-phone" placeholder=" " autocomplete="tel" maxlength="20">
             <label for="f-phone">Телефон (необязательно)</label>
           </div>
 
@@ -356,7 +453,7 @@
             <p>Заявка принята! Свяжусь с вами в ближайшее время.</p>
           </div>
           <div class="form-error" id="form-error" hidden role="alert">
-            <p>Что-то пошло не так. Напишите напрямую в <a href="https://t.me/" class="form-link">Telegram</a>.</p>
+            <p>Что-то пошло не так. Напишите напрямую в <a href="https://t.me/svetlanayuzmieva" class="form-link">Telegram</a>.</p>
           </div>
         </form>
       </div>
@@ -364,7 +461,7 @@
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="footer" id="contacts" aria-label="Контакты и навигация">
+  <footer class="footer" id="contacts">
     <div class="container">
       <div class="footer__inner">
         <div class="footer__brand">
@@ -372,18 +469,18 @@
           <p class="footer__tagline">Светлана Юзмиева · Психолог-практик</p>
           <p class="footer__city">Сочи / Онлайн по всему миру</p>
         </div>
-        <nav class="footer__nav" aria-label="Навигация футера">
-          <a href="#method">О методе</a>
-          <a href="#about">О Светлане</a>
+        <nav class="footer__nav" aria-label="Навигация">
+          <a href="#story">Главная</a>
+          <a href="#pricing">Тарифы</a>
           <a href="#reviews">Отзывы</a>
           <a href="#form">Записаться</a>
         </nav>
         <div class="footer__contacts">
-          <a href="https://t.me/" class="footer__contact" target="_blank" rel="noopener noreferrer">
+          <a href="https://t.me/svetlanayuzmieva" class="footer__contact" target="_blank" rel="noopener noreferrer">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.01 9.47c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L6.26 14.26l-2.95-.924c-.642-.2-.654-.642.136-.95l11.52-4.44c.537-.194 1.006.133.596.302z"/></svg>
             Telegram
           </a>
-          <a href="https://instagram.com/" class="footer__contact" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/svetlanajuz/" class="footer__contact" target="_blank" rel="noopener noreferrer">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             Instagram
           </a>
@@ -393,7 +490,7 @@
         <p>&copy; 2025 Картина Души · Светлана Юзмиева</p>
         <div class="footer__legal">
           <a href="#privacy-policy">Политика конфиденциальности</a>
-          <a href="#personal-data">Обработка персональных данных</a>
+          <a href="#personal-data">Обработка данных</a>
           <a href="#public-offer">Публичная оферта</a>
         </div>
       </div>
