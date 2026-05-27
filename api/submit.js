@@ -54,7 +54,7 @@ async function initPayment(name, phone, sessionType, orderId) {
   const password    = process.env.TBANK_PASSWORD;
   if (!terminalKey || !password) throw new Error('T-Bank not configured');
 
-  const amountKopecks = sessionType?.includes('Групповое') ? 620000 : 2040000;
+  const amountKopecks = sessionType?.includes('Групповое') ? 1000 : 2040000;
 
   const params = {
     TerminalKey:     terminalKey,
