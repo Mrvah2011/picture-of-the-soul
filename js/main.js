@@ -11,12 +11,26 @@ if (!isTouchDevice) {
   const ring = document.getElementById('cursor-ring');
   const dot  = document.getElementById('cursor-dot');
   let lastParticle = 0;
+  let cursorVisible = false;
+
+  // GSAP controls all transforms — xPercent/yPercent handle centering
+  gsap.set(ring, { xPercent: -50, yPercent: -50 });
+  gsap.set(dot,  { xPercent: -50, yPercent: -50 });
 
   document.addEventListener('mousemove', (e) => {
+    // Reveal cursor on first move (avoids flash at 0,0 on load)
+    if (!cursorVisible) {
+      gsap.to([ring, dot], { opacity: 1, duration: .25 });
+      cursorVisible = true;
+    }
     gsap.to(ring, { x: e.clientX, y: e.clientY, duration: .38, ease: 'power2.out' });
     gsap.to(dot,  { x: e.clientX, y: e.clientY, duration: .08 });
     if (Date.now() - lastParticle > 60) { spawnParticle(e.clientX, e.clientY); lastParticle = Date.now(); }
   });
+
+  // Hide cursor when leaving window
+  document.addEventListener('mouseleave', () => gsap.to([ring, dot], { opacity: 0, duration: .2 }));
+  document.addEventListener('mouseenter', () => { if (cursorVisible) gsap.to([ring, dot], { opacity: 1, duration: .2 }); });
 
   document.querySelectorAll('a, button, .service-card, .review-card, .gallery__slide, .form-check, .session-radio, .pricing__card').forEach(el => {
     el.addEventListener('mouseenter', () => { gsap.to(ring, { scale: 1.7, borderColor: 'rgba(255,184,0,1)', duration: .25 }); gsap.to(dot, { scale: 0, duration: .2 }); });
@@ -339,10 +353,22 @@ if (form) {
       });
 
       if (res.ok) {
+        const data = await res.json();
         form.reset();
-        successEl.hidden = false; errorEl.hidden = true;
-        gsap.fromTo(successEl, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .4 });
-        successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        if (data.paymentUrl) {
+          // Show redirect message, then go to T-Bank payment page
+          successEl.hidden = false; errorEl.hidden = true;
+          successEl.querySelector('p').textContent = 'Заявка принята! Переходим к оплате…';
+          gsap.fromTo(successEl, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .4 });
+          btn.querySelector('.btn__text').textContent = 'Переходим к оплате…';
+          setTimeout(() => { window.location.href = data.paymentUrl; }, 1800);
+          return; // skip finally reset of button text
+        } else {
+          successEl.hidden = false; errorEl.hidden = true;
+          gsap.fromTo(successEl, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .4 });
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
       } else { throw new Error(); }
     } catch {
       errorEl.hidden = false; successEl.hidden = true;
