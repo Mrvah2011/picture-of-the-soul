@@ -390,6 +390,58 @@ if (form) {
   });
 }
 
+/* ===== Payment result handling (return from T-Bank) ===== */
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const payment = params.get('payment');
+  if (!payment) return;
+
+  // Remove ?payment= from URL without reload
+  history.replaceState(null, '', window.location.pathname);
+
+  const overlay = document.createElement('div');
+  overlay.id = 'payment-overlay';
+  overlay.style.cssText = [
+    'position:fixed;inset:0;z-index:99999',
+    'display:flex;flex-direction:column;align-items:center;justify-content:center',
+    'background:rgba(10,10,11,.96);backdrop-filter:blur(20px)',
+    'padding:32px;text-align:center'
+  ].join(';');
+
+  const isSuccess = payment === 'success';
+  overlay.innerHTML = `
+    <div style="font-size:64px;margin-bottom:20px">${isSuccess ? '✅' : '❌'}</div>
+    <h2 style="font-family:Georgia,serif;color:#F5F0E8;font-size:clamp(22px,4vw,36px);margin:0 0 12px">
+      ${isSuccess ? 'Оплата прошла успешно!' : 'Оплата не прошла'}
+    </h2>
+    <p style="color:rgba(245,240,232,.65);font-size:16px;max-width:420px;margin:0 0 32px;line-height:1.6">
+      ${isSuccess
+        ? 'Спасибо! Светлана свяжется с вами в ближайшее время для подтверждения записи.'
+        : 'Что-то пошло не так. Попробуйте ещё раз или напишите напрямую в Telegram.'}
+    </p>
+    ${isSuccess
+      ? `<a href="https://t.me/svetlanayuzmieva" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;
+                  background:linear-gradient(135deg,#FFB800,#E29578);color:#0A0A0B;font-weight:700;
+                  font-size:15px;text-decoration:none">
+           ✈️ Написать Светлане
+         </a>`
+      : `<button onclick="document.getElementById('payment-overlay').remove()"
+           style="padding:14px 32px;border-radius:50px;border:1.5px solid rgba(255,184,0,.6);
+                  color:#FFB800;font-weight:700;font-size:15px;cursor:pointer;background:none">
+           ← Вернуться на сайт
+         </button>`}
+  `;
+
+  document.body.appendChild(overlay);
+  gsap.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: .5, ease: 'power2.out' });
+
+  // Close on click outside content (success only after 3s)
+  if (!isSuccess) {
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+  }
+})();
+
 /* ===== Smooth anchor scroll ===== */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
