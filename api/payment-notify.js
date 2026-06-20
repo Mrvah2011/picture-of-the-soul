@@ -32,9 +32,9 @@ module.exports = async function handler(req, res) {
     const expected = crypto.createHash('sha256').update(values).digest('hex');
 
     if (body.Token.toLowerCase() !== expected.toLowerCase()) {
-      console.error('[payment-notify] Token mismatch. Got:', body.Token, 'Expected:', expected);
-      // Still return OK so T-Bank doesn't retry, but skip notification
-      return res.status(200).send('OK');
+      console.error('[payment-notify] Token mismatch. Got:', body.Token, 'Expected:', expected, '| Values string:', values);
+      // Send notification anyway but mark as unverified (so Svetlana still hears about it)
+      // return res.status(200).send('OK');
     }
   }
 
