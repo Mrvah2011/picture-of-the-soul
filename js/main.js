@@ -164,7 +164,7 @@ document.querySelectorAll('.pricing__btn[data-session]').forEach(btn => {
   btn.addEventListener('click', () => {
     const type = btn.dataset.session === 'group'
       ? 'Групповое — 6 200 ₽'
-      : 'Индивидуальное — 20 400 ₽';
+      : 'Индивидуальное — 24 000 ₽';
     const radio = document.querySelector(`input[name="session_type"][value="${type}"]`);
     if (radio) {
       radio.checked = true;
